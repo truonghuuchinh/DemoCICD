@@ -6,5 +6,7 @@ public static class Query
 {
     public record GetProductQuery() : IQuery<IEnumerable<ProductResponse>>;
 
+    public record GetProductByNameQuery(string Name) : IQuery<IEnumerable<ProductResponse>>;
+
     public record GetProductByIdQuery(Guid Id) : IQuery<ProductResponse>;
 }

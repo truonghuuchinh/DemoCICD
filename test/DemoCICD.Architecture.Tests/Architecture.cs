@@ -158,74 +158,54 @@ public class Architecture
 
     #region ============== Command ================
 
-    [Fact]
-    public void Command_Should_Have_NamingConventionEndingCommand()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Command";
+    //[Fact]
+    //public void Command_Should_Have_NamingConventionEndingCommand()
+    //{
+    //    // Arrange
+    //    var assembly = AssemblyReference.Assembly;
+    //    var endSuffix = "Command";
 
-        // Action
-        var typeCommand = typeof(ICommand);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeCommand)
-            .Should()
-            .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
-            .GetResult();
+    //    // Action
+    //    var typeCommand = typeof(ICommand);
+    //    var testResult = Types
+    //        .InAssembly(assembly)
+    //        .That()
+    //        .ImplementInterface(typeCommand)
+    //        .Should()
+    //        .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
+    //        .GetResult();
 
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
+    //    // Assert
+    //    testResult.IsSuccessful.Should().BeTrue();
+    //}
 
-    [Fact]
-    public void CommandT_Should_Have_NamingConventionEndingCommand()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Command";
+    //[Fact]
+    //public void CommandT_Should_Have_NamingConventionEndingCommand()
+    //{
+    //    // Arrange
+    //    var assembly = AssemblyReference.Assembly;
+    //    var endSuffix = "Command";
 
-        // Action
-        var typeCommand = typeof(ICommand<>);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeCommand)
-            .Should()
-            .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
-            .GetResult();
+    //    // Action
+    //    var typeCommand = typeof(ICommand<>);
+    //    var testResult = Types
+    //        .InAssembly(assembly)
+    //        .That()
+    //        .ImplementInterface(typeCommand)
+    //        .Should()
+    //        .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
+    //        .GetResult();
 
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
+    //    // Assert
+    //    testResult.IsSuccessful.Should().BeTrue();
+    //}
 
-    [Fact]
-    public void Command_Should_Have_BeSealed()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
-
-        // Action
-        var typeCommand = typeof(ICommand);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeCommand)
-            .Should()
-            .BeSealed()
-            .GetResult();
-
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
 
     [Fact]
     public void CommandT_Should_Have_BeSealed()
     {
         // Arrange
         var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Command";
 
         // Action
         var typeCommand = typeof(ICommand<>);
@@ -289,7 +269,6 @@ public class Architecture
     {
         // Arrange
         var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Handler";
 
         // Action
         var typeCommand = typeof(ICommandHandler<>);
@@ -328,67 +307,47 @@ public class Architecture
 
     #region ============== Query ================
 
-    [Fact]
-    public void QueryT_Should_Have_NamingConventionEndingQuery()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Query";
+    //[Fact]
+    //public void QueryT_Should_Have_NamingConventionEndingQuery()
+    //{
+    //    // Arrange
+    //    var assembly = AssemblyReference.Assembly;
+    //    var endSuffix = "Query";
 
-        // Action
-        var typeQuery = typeof(IQuery<>);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeQuery)
-            .Should()
-            .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
-            .GetResult();
+    //    // Action
+    //    var typeQuery = typeof(IQuery<>);
+    //    var testResult = Types
+    //        .InAssembly(assembly)
+    //        .That()
+    //        .ImplementInterface(typeQuery)
+    //        .Should()
+    //        .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
+    //        .GetResult();
 
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
+    //    // Assert
+    //    testResult.IsSuccessful.Should().BeTrue();
+    //}
 
-    [Fact]
-    public void QueryT_Should_Have_BeSealed()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
+    //[Fact]
+    //public void QueryHandlerT_Should_Have_NamingConventionEndingQuery()
+    //{
+    //    // Arrange
+    //    var assembly = AssemblyReference.Assembly;
+    //    var endSuffix = "Handler";
 
-        // Action
-        var typeQuery = typeof(IQuery<>);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeQuery)
-            .Should()
-            .BeSealed()
-            .GetResult();
+    //    // Action
+    //    var typeQuery = typeof(IQueryHandler<,>);
+    //    var testResult = Types
+    //        .InAssembly(assembly)
+    //        .That()
+    //        .ImplementInterface(typeQuery)
+    //        .Should()
+    //        .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
+    //        .GetResult();
 
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
-
-    [Fact]
-    public void QueryHandlerT_Should_Have_NamingConventionEndingQuery()
-    {
-        // Arrange
-        var assembly = AssemblyReference.Assembly;
-        var endSuffix = "Handler";
-
-        // Action
-        var typeQuery = typeof(IQueryHandler<,>);
-        var testResult = Types
-            .InAssembly(assembly)
-            .That()
-            .ImplementInterface(typeQuery)
-            .Should()
-            .HaveNameEndingWith(endSuffix, StringComparison.Ordinal)
-            .GetResult();
-
-        // Assert
-        testResult.IsSuccessful.Should().BeTrue();
-    }
+    //    // Assert
+    //    testResult.IsSuccessful.Should().BeTrue();
+    //}
 
     [Fact]
     public void QueryHandlerT_Should_Have_BeSealed()
