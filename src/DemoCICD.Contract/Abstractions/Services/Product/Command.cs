@@ -15,5 +15,5 @@ public sealed class Command
 
         public decimal Price { get; set; }
     }
-    public record DeletedProduct(Guid Id): ICommand;
+    public record DeletedProduct(Guid Id) : ICommand;
 }

@@ -1,6 +1,6 @@
 ﻿namespace DemoCICD.Domain.Exceptions;
 
-public abstract class NotFoundException : DomainException
+public class NotFoundException : DomainException
 {
     protected NotFoundException(string message)
         : base("Not Found", message)

@@ -10,7 +10,9 @@ public class EFUnitOfWork : IUnitOfWork
         => _context = context;
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
-        => await _context.SaveChangesAsync();
+    {
+        await _context.SaveChangesAsync(cancellationToken);
+    }
 
     async ValueTask IAsyncDisposable.DisposeAsync()
         => await _context.DisposeAsync();
