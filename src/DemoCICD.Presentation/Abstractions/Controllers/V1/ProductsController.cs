@@ -45,7 +45,7 @@ public class ProductsController : ApiController
     [HttpPost(Name = "CreateProduct")]
     [ProducesResponseType(typeof(Result), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Create(Command.CreatedProduct request)
+    public async Task<IActionResult> Create(Command.CreatedProductCommand request)
     {
         var result = await _sender.Send(request);
         return Ok(result);
@@ -54,7 +54,7 @@ public class ProductsController : ApiController
     [HttpPut("{productId}")]
     [ProducesResponseType(typeof(Result), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(Guid productId, [FromBody] Command.UpdatedProduct request)
+    public async Task<IActionResult> Update(Guid productId, [FromBody] Command.UpdatedProductCommand request)
     {
         if (productId != request.Id)
         {
@@ -72,7 +72,7 @@ public class ProductsController : ApiController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Delete(Guid productId)
     {
-        var result = await _sender.Send(new Command.DeletedProduct(productId));
+        var result = await _sender.Send(new Command.DeletedProductCommand(productId));
         return Ok(result);
     }
 }

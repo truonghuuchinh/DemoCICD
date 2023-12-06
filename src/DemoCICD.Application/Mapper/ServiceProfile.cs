@@ -11,6 +11,6 @@ public class ServiceProfile : Profile
     {
         CreateMap<PagedResult<Product>, PagedResult<ProductResponse>>();
         CreateMap<Product, ProductResponse>();
-        CreateMap<CreatedProduct, Product>();
+        CreateMap<CreatedProductCommand, Product>();
     }
 }

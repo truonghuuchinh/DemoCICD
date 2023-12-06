@@ -7,7 +7,7 @@ using static DemoCICD.Domain.Exceptions.ProductException;
 using ProductEntity = DemoCICD.Domain.Entities.Product;
 
 namespace DemoCICD.Application.UserCases.V1.Commands.Product;
-public sealed class UpdateProductCommandHandler : ICommandHandler<UpdatedProduct>
+public sealed class UpdateProductCommandHandler : ICommandHandler<UpdatedProductCommand>
 {
     private readonly IRepositoryBase<ProductEntity, Guid> repository;
     private readonly IUnitOfWork unitOfWork;
@@ -20,7 +20,7 @@ public sealed class UpdateProductCommandHandler : ICommandHandler<UpdatedProduct
         this.unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> Handle(UpdatedProduct request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(UpdatedProductCommand request, CancellationToken cancellationToken)
     {
         var product = await repository.FindByIdAsync(request.Id) ?? throw new ProductNotFoundException(request.Id);
 

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 
 namespace DemoCICD.Contract.Abstractions.Services.Product.Validators;
-internal class DeletedProductValidator : AbstractValidator<Command.DeletedProduct>
+internal class DeletedProductValidator : AbstractValidator<Command.DeletedProductCommand>
 {
     public DeletedProductValidator()
     {

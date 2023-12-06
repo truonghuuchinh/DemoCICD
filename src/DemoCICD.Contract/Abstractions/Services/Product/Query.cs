@@ -6,7 +6,7 @@ using static DemoCICD.Contract.Abstractions.Services.Product.Response;
 namespace DemoCICD.Contract.Abstractions.Services.Product;
 public static class Query
 {
-    public record GetProductQuery(
+    public sealed record GetProductQuery(
         string? SearchTerm,
         string? SortColumn,
         SortOrder? SortOrder,
@@ -15,6 +15,6 @@ public static class Query
         int PageSize)
         : IQuery<PagedResult<ProductResponse>>;
 
-    public record GetProductByIdQuery(Guid Id)
+    public sealed record GetProductByIdQuery(Guid Id)
         : IQuery<ProductResponse>;
 }

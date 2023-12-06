@@ -80,6 +80,15 @@ dotnet_diagnostic.IDE0058.severity = none
 # IDE0053: Use expression body for lambda expression
 dotnet_diagnostic.IDE0053.severity = none
 
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# SA1124: Do not use regions
+dotnet_diagnostic.SA1124.severity = none
+
+# S4144: Methods should not have identical implementations
+dotnet_diagnostic.S4144.severity = none
+
 [*.{cs,vb}]
 dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion

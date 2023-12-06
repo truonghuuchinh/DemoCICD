@@ -8,7 +8,7 @@ using static DemoCICD.Contract.Abstractions.Services.Product.Command;
 using ProductEntity = DemoCICD.Domain.Entities.Product;
 
 namespace DemoCICD.Application.UserCases.V1.Commands.Product;
-public sealed class CreateProductCommandHandler : ICommandHandler<CreatedProduct>
+public sealed class CreateProductCommandHandler : ICommandHandler<CreatedProductCommand>
 {
     private readonly IRepositoryBase<ProductEntity, Guid> repository;
     private readonly IUnitOfWork unitOfWork;
@@ -24,7 +24,7 @@ public sealed class CreateProductCommandHandler : ICommandHandler<CreatedProduct
         this.unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> Handle(CreatedProduct request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(CreatedProductCommand request, CancellationToken cancellationToken)
     {
         // Check name must be unique
         var product = await repository.FindSingleAsync(x => x.Name.ToLower() == request.Name!.ToLower());

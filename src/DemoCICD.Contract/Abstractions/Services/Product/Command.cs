@@ -3,9 +3,10 @@
 namespace DemoCICD.Contract.Abstractions.Services.Product;
 public sealed class Command
 {
-    public record CreatedProduct(string Name, decimal Price, string Description) : ICommand;
+    public sealed record CreatedProductCommand(string Name, decimal Price, string Description)
+        : ICommand;
 
-    public record UpdatedProduct : ICommand
+    public sealed record UpdatedProductCommand : ICommand
     {
         public Guid Id { get; set; }
 
@@ -15,5 +16,7 @@ public sealed class Command
 
         public decimal Price { get; set; }
     }
-    public record DeletedProduct(Guid Id) : ICommand;
+
+    public sealed record DeletedProductCommand(Guid Id)
+        : ICommand;
 }
