@@ -67,8 +67,6 @@ public class RepositoryBase<TEntity, TKey> : IRepositoryBase<TEntity, TKey>, IDi
         => _context.Set<TEntity>().Update(entity);
 
     public void Dispose()
-    {
-        _context?.Dispose();
-    }
+        => _context?.Dispose();
 }
 

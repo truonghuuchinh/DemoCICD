@@ -1,5 +1,5 @@
 ﻿using DemoCICD.Application.Behaviors;
-using DemoCICD.Application.Services;
+using DemoCICD.Application.Mapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

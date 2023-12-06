@@ -15,14 +15,15 @@ public class Result
         }
 
         IsSuccess = isSuccess;
-        Error = error;
+
+        Error = isSuccess ? default : error;
     }
 
     public bool IsSuccess { get; }
 
     public bool IsFailure => !IsSuccess;
 
-    public Error Error { get; }
+    public Error? Error { get; }
 
     public static Result Success() => new Result(true, Error.None);
 

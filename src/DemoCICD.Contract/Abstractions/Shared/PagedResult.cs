@@ -35,9 +35,9 @@ public class PagedResult<T>
 
         var totalCount = await query.CountAsync();
         var items = await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-        return new(items, pageIndex, pageSize, totalCount);
+        return new (items, pageIndex, pageSize, totalCount);
     }
 
     public static PagedResult<T> Create(List<T> items, int pageIndex, int pageSize, int totalCount)
-        => new(items, pageIndex, pageSize, totalCount);
+        => new (items, pageIndex, pageSize, totalCount);
 }

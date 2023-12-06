@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DemoCICD.Contract\DemoCICD.Contract.csproj" />
     <ProjectReference Include="..\DemoCICD.Domain\DemoCICD.Domain.csproj" />
+    <ProjectReference Include="..\DemoCICD.Persistence\DemoCICD.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using DemoCICD.Contract.Abstractions.Services.Product;
 using DemoCICD.Contract.Abstractions.Shared;
+using DemoCICD.Contract.Extensions;
 using DemoCICD.Domain.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -18,9 +19,17 @@ public class ProductsController : ApiController
     [HttpGet(Name = "GetProducts")]
     [ProducesResponseType(typeof(Result<IEnumerable<Response.ProductResponse>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(
+        string? searchTerm,
+        string? sortColumn,
+        string? sortOrder,
+        string? sortColumnAndOrder,
+        int pageIndex,
+        int pageSize)
     {
-        var result = await _sender.Send(new Query.GetProductQuery());
+        var sortColumnOrder = SortOrderExtension.ConvertStringToSortOrderAndColumns(sortColumnAndOrder);
+        var sort = SortOrderExtension.ConvertStringToSortOrder(sortOrder);
+        var result = await _sender.Send(new Query.GetProductQuery(searchTerm, sortColumn, sort, sortColumnOrder, pageIndex, pageSize));
         return Ok(result);
     }
 
@@ -30,15 +39,6 @@ public class ProductsController : ApiController
     public async Task<IActionResult> GetById(Guid productId)
     {
         var result = await _sender.Send(new Query.GetProductByIdQuery(productId));
-        return Ok(result);
-    }
-
-    [HttpGet("{productName}", Name = "GetProductsByName")]
-    [ProducesResponseType(typeof(Response.ProductResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetProductsByName(string productName)
-    {
-        var result = await _sender.Send(new Query.GetProductByNameQuery(productName));
         return Ok(result);
     }
 
