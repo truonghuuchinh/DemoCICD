@@ -20,8 +20,4 @@
     <ProjectReference Include="..\DemoCICD.Infrastructure\DemoCICD.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstractions\Controllers\V2\" />
-  </ItemGroup>
-
 </Project>

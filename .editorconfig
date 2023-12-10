@@ -89,6 +89,18 @@ dotnet_diagnostic.SA1124.severity = none
 # S4144: Methods should not have identical implementations
 dotnet_diagnostic.S4144.severity = none
 
+# IDE0022: Use block body for method
+dotnet_diagnostic.IDE0022.severity = none
+
+# SA1123: Do not place regions within elements
+dotnet_diagnostic.SA1123.severity = none
+
+# CA1310: Specify StringComparison for correctness
+dotnet_diagnostic.CA1310.severity = none
+
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none
+
 [*.{cs,vb}]
 dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
@@ -116,7 +128,7 @@ csharp_style_expression_bodied_constructors = false:silent
 csharp_style_expression_bodied_indexers = true:error
 csharp_style_expression_bodied_lambdas = true:none
 csharp_style_expression_bodied_local_functions = true:error
-csharp_style_expression_bodied_methods = false:silent
+csharp_style_expression_bodied_methods = false:none
 csharp_style_expression_bodied_operators = true:error
 csharp_style_expression_bodied_properties = true:error
 

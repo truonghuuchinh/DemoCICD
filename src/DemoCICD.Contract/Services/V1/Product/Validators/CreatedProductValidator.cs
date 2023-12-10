@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using DemoCICD.Contract.Services.V1.Product;
+using FluentValidation;
 
-namespace DemoCICD.Contract.Abstractions.Services.Product.Validators;
+namespace DemoCICD.Contract.Services.V1.Product.Validators;
 public class CreatedProductValidator : AbstractValidator<Command.CreatedProductCommand>
 {
     public CreatedProductValidator()

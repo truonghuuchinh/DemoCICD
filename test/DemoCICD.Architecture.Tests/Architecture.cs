@@ -367,4 +367,25 @@ public class Architecture
         testResult.IsSuccessful.Should().BeTrue();
     }
     #endregion
+
+    #region ============== Publisher =================
+    [Fact]
+    public void Handler_Should_HaveEndingName_WithEventHanler()
+    {
+        // Arrange
+        var application = Application.AssemblyReference.Assembly;
+
+        // Act
+        var result = Types
+            .InAssembly(application)
+            .That()
+            .ImplementInterface(typeof(IDomainEventHandler<>))
+            .Should()
+            .HaveNameEndingWith("EventHandler", StringComparison.Ordinal)
+            .GetResult();
+
+        // Assert
+        result.IsSuccessful.Should().BeTrue();
+    }
+    #endregion
 }

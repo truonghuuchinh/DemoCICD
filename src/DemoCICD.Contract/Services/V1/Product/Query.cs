@@ -1,9 +1,9 @@
 ﻿using DemoCICD.Contract.Abstractions.Messages;
 using DemoCICD.Contract.Abstractions.Shared;
 using DemoCICD.Contract.Enumerations;
-using static DemoCICD.Contract.Abstractions.Services.Product.Response;
+using static DemoCICD.Contract.Services.V1.Product.Response;
 
-namespace DemoCICD.Contract.Abstractions.Services.Product;
+namespace DemoCICD.Contract.Services.V1.Product;
 public static class Query
 {
     public sealed record GetProductQuery(

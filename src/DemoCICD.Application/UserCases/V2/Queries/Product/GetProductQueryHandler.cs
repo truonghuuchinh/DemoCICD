@@ -4,13 +4,13 @@ using AutoMapper;
 using DemoCICD.Contract.Abstractions.Messages;
 using DemoCICD.Contract.Abstractions.Shared;
 using DemoCICD.Contract.Enumerations;
-using DemoCICD.Contract.Services.V1.Product;
+using DemoCICD.Contract.Services.V2.Product;
 using DemoCICD.Domain.Abstractions.Repositories;
 using DemoCICD.Persistence;
 using Microsoft.EntityFrameworkCore;
 using ProductEntity = DemoCICD.Domain.Entities.Product;
 
-namespace DemoCICD.Application.UserCases.V1.Queries.Product;
+namespace DemoCICD.Application.UserCases.V2.Queries.Product;
 internal sealed class GetProductQueryHandler : IQueryHandler<Query.GetProductQuery, PagedResult<Response.ProductResponse>>
 {
     private readonly IRepositoryBase<ProductEntity, Guid> _repositoryBase;

@@ -6,10 +6,9 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
-Log.Logger = new LoggerConfiguration().ReadFrom
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom
     .Configuration(configuration)
-    .WriteTo
-    .Console()
     .CreateLogger();
 
 builder
@@ -27,6 +26,11 @@ builder
     .Services
     .AddControllers()
     .AddApplicationPart(DemoCICD.Presentation.AssemblyReference.Assembly);
+
+// Add configuration to retry
+builder
+    .Services
+    .ConfigurationServiceRetryOptions(builder.Configuration.GetSection("SqlServerRetryOptions"));
 
 // Add appliccation, infrastructure, persistence
 builder.Services.AddPersistence();

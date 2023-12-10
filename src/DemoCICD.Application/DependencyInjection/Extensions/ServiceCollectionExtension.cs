@@ -20,7 +20,11 @@ public static class ServiceCollectionExtension
         services.AddValidatorsFromAssembly(Contract.AssemblyReference.Assembly, includeInternalTypes: true);
 
         // Add validation pipeline before sending request to handler
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+        services
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(TracingPipelineBehavior<,>))
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>))
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformancePipelineBehavior<,>))
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionPipelineBehavior<,>));
 
         return services;
     }

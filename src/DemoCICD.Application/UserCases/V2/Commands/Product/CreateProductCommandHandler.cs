@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using DemoCICD.Contract.Abstractions.Messages;
 using DemoCICD.Contract.Abstractions.Shared;
-using DemoCICD.Contract.Services.V1;
+using DemoCICD.Contract.Services.V2;
 using DemoCICD.Domain.Abstractions;
 using DemoCICD.Domain.Abstractions.Repositories;
 using DemoCICD.Domain.Exceptions;
 using MediatR;
-using static DemoCICD.Contract.Services.V1.Product.Command;
+using static DemoCICD.Contract.Services.V2.Product.Command;
 using ProductEntity = DemoCICD.Domain.Entities.Product;
 
-namespace DemoCICD.Application.UserCases.V1.Commands.Product;
+namespace DemoCICD.Application.UserCases.V2.Commands.Product;
 internal sealed class CreateProductCommandHandler : ICommandHandler<CreatedProductCommand>
 {
     private readonly IRepositoryBase<ProductEntity, Guid> _repository;

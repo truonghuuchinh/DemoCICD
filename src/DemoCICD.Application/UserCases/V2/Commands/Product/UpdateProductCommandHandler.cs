@@ -1,14 +1,14 @@
 ﻿using DemoCICD.Contract.Abstractions.Messages;
 using DemoCICD.Contract.Abstractions.Shared;
-using DemoCICD.Contract.Services.V1;
+using DemoCICD.Contract.Services.V2;
 using DemoCICD.Domain.Abstractions;
 using DemoCICD.Domain.Abstractions.Repositories;
 using MediatR;
-using static DemoCICD.Contract.Services.V1.Product.Command;
+using static DemoCICD.Contract.Services.V2.Product.Command;
 using static DemoCICD.Domain.Exceptions.ProductException;
 using ProductEntity = DemoCICD.Domain.Entities.Product;
 
-namespace DemoCICD.Application.UserCases.V1.Commands.Product;
+namespace DemoCICD.Application.UserCases.V2.Commands.Product;
 internal sealed class UpdateProductCommandHandler : ICommandHandler<UpdatedProductCommand>
 {
     private readonly IRepositoryBase<ProductEntity, Guid> repository;

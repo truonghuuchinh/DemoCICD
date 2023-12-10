@@ -1,13 +1,14 @@
 ﻿using Asp.Versioning;
-using DemoCICD.Contract.Abstractions.Services.Product;
 using DemoCICD.Contract.Abstractions.Shared;
 using DemoCICD.Contract.Extensions;
+using DemoCICD.Contract.Services.V1.Product;
 using DemoCICD.Domain.Exceptions;
+using DemoCICD.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DemoCICD.Presentation.Abstractions.Controllers.V1;
+namespace DemoCICD.Presentation.Controllers.V1;
 [ApiVersion(1)]
 public class ProductsController : ApiController
 {
@@ -48,6 +49,11 @@ public class ProductsController : ApiController
     public async Task<IActionResult> Create(Command.CreatedProductCommand request)
     {
         var result = await _sender.Send(request);
+        if (result.IsFailure)
+        {
+            return HandlerFailure(result);
+        }
+
         return Ok(result);
     }
 
@@ -61,9 +67,15 @@ public class ProductsController : ApiController
             throw new BadRequestException("Please input match product id");
         }
 
-        request.Id = productId;
+        request = request with { Id = productId };
 
         var result = await _sender.Send(request);
+
+        if (result.IsFailure)
+        {
+            return HandlerFailure(result);
+        }
+
         return Ok(result);
     }
 
